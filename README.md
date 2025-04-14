@@ -1,56 +1,70 @@
 # LersGAN
-LersGAN: A GAN-Based Model for Low-Light Remote Sensing Image Enhancement
+**LersGAN: A GAN-Based Model for Low-Light Remote Sensing Image Enhancement**
 
-## Representitive Results
-![representive_results](/assets/show_0.png)
+## 📈 Outputs & Applications
+<img src="photo/demo1.png" width="50%" />
 
-## demo
-![representive_results](/assets/show_1.png)
+## 🎨 Visual Comparisons on RSDark Dataset
+<img src="photo/RSph.png" width="50%" />
 
-## :postbox: News
 
-📢 **2025-4-15** --- 👋👋👋 Release codes and models for LersGAN.
 
-📢 **2025-4-14** --- Initialized the git project.  
+## 📰 News
+- **2025-04-15** — 🚀 Released code and pretrained models for LersGAN.
+- **2025-04-14** — 🔧 Initialized the Git project.
 
-### TODO
-- [ ] Update training code.
-- [ ] Update testing code.
-- [ ] Update baseline methods.
-- [ ] Update visualization code for linux.
+## 📝 TODO
+- [ ] Update training scripts
+- [ ] Update testing scripts
+- [ ] Integrate baseline methods
+- [ ] Improve Linux visualization scripts
 
-## :round_pushpin: Get You Ready
+## 🚀 Getting Started
 
-<details>
-  ### :rocket:Environment Preparing
-  ```
-  python3.5
-  ```
-  You should prepare at least 3 1080ti gpus or change the batch size. 
-  
-  ```pip install -r requirement.txt``` </br>
-  ```mkdir model``` </br>
-  Download VGG pretrained model from [[Google Drive 1]](https://drive.google.com/file/d/1IfCeihmPqGWJ0KHmH-mTMi_pn3z3Zo-P/view?usp=sharing), and then put it into the directory `model`.
-  
-</details>
+### 📦 Environment Setup
+```bash
+# Requires Python 3.5+
+pip install -r requirements.txt
+```
+- **Hardware**: At least 3× NVIDIA 1080 Ti GPUs (or adjust batch size accordingly).
 
-## :dancers: Training process
-<details>
-  TODO
-<!--   Before starting training process, you should launch the `visdom.server` for visualizing.
-  
-  ```nohup python -m visdom.server -port=8097```
-  
-  then run the following command
-  
-  ```python scripts/script.py --train``` -->
-</details>
+### 📂 Directory Structure
+```
+.
+├── photo/           # Sample images and demos
+├── scripts/         # Training and testing scripts
+├── model/           # Pretrained models
+│   └── VGG/         # Download VGG pretrained model here
+└── requirements.txt
+```
 
-## :space_invader: Testing process
-<details>  
-  TODO
-<!--   Create directories `../test_dataset/testA` and `../test_dataset/testB`. Put your test images on `../test_dataset/testA` (And you should keep whatever one image in `../test_dataset/testB` to make sure program can start.)
-  Download [pretrained model](https://drive.google.com/file/d/1AkV-n2MdyfuZTFvcon8Z4leyVb0i7x63/view?usp=sharing) and put it into `./checkpoints/enlightening`
-  Run
-  ```python scripts/script.py --predict ``` -->
-</details>
+### 🔗 Download Pretrained VGG Model
+1. Download from [Google Drive](https://drive.google.com/file/d/1IfCeihmPqGWJ0KHmH-mTMi_pn3z3Zo-P/view?usp=sharing)
+2. Place the file in `model/VGG/`.
+
+## 🤖 Training
+TODO
+<!-- > **Note**: Start a Visdom server for real-time monitoring:
+```bash
+nohup python -m visdom.server --port=8097 &
+```
+Then run:
+```bash
+python scripts/train.py
+``` -->
+
+## 🧪 Testing
+TODO
+<!-- 1. Create test directories:
+   ```bash
+   mkdir -p test_dataset/testA test_dataset/testB
+   ```
+2. Place your low-light images in `test_dataset/testA` (and keep one image in `test_dataset/testB`).
+3. Download pretrained model and place it in `checkpoints/enlightening/`.
+4. Run:
+   ```bash
+   python scripts/test.py
+   ``` -->
+
+## 📫 Contact
+For issues or contributions, please open an issue or pull request on GitHub.
