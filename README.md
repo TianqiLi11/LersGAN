@@ -2,12 +2,10 @@
 **LersGAN: A GAN-Based Model for Low-Light Remote Sensing Image Enhancement**
 
 ## 📈 Outputs & Applications
-<img src="photo/demo1.png" width="50%" />
+<img src="photo/demo1.png" width="75%" />
 
 ## 🎨 Visual Comparisons on RSDark Dataset
-<img src="photo/RSph.png" width="50%" />
-
-
+<img src="photo/RSph.png" width="75%" />
 
 ## 📰 News
 - **2025-04-15** — 🚀 Released code and pretrained models for LersGAN.
@@ -32,9 +30,10 @@ pip install -r requirements.txt
 ```
 .
 ├── photo/           # Sample images and demos
-├── scripts/         # Training and testing scripts
-├── model/           # Pretrained models
-│   └── VGG/         # Download VGG pretrained model here
+├── CEAM/            # Code of CEAM
+├── LersGAN-main/    # Main code of LersGAN
+│   └── model/       # Pretrained models
+│       └── VGG/     # Download VGG pretrained model here
 └── requirements.txt
 ```
 
