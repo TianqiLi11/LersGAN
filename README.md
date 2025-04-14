@@ -8,7 +8,7 @@
 <img src="photo/RSph.png" width="75%" />
 
 ## 📰 News
-- **2025-04-15** — 🚀 Released code and pretrained models for LersGAN.
+- **2025-04-15** — 👋 Release the core model framework code of LersGAN.
 - **2025-04-14** — 🔧 Initialized the Git project.
 
 ## 📝 TODO
