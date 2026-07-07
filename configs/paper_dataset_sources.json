@@ -1,0 +1,203 @@
+{
+  "paper": {
+    "title": "LersGAN: A GAN-Based Model for Low-Light Remote Sensing Image Enhancement",
+    "doi": "10.1109/JSTARS.2025.3608696",
+    "dataset_section": "B. Dataset Description"
+  },
+  "dataset": {
+    "name": "LERSGAN_RS_PAPER",
+    "output_root": "data/LERSGAN_RS_PAPER",
+    "seed": 2026
+  },
+  "training_dataset": {
+    "setting": "unsupervised_unpaired",
+    "paper_sources": [
+      {
+        "paper_ref": "[11]",
+        "name": "LOL / Deep Retinex Decomposition for Low-Light Enhancement",
+        "source_dataset_size": {
+          "real_pairs": 500,
+          "standard_split": {
+            "train_pairs": 485,
+            "test_pairs": 15
+          },
+          "synthetic_pairs_from_RAISE": 1000
+        },
+        "selected_by_lersgan_from_source": null
+      },
+      {
+        "paper_ref": "[53]",
+        "name": "Deep High Dynamic Range Imaging of Dynamic Scenes",
+        "source_dataset_size": {
+          "scenes": 74
+        },
+        "selected_by_lersgan_from_source": null
+      },
+      {
+        "paper_ref": "[54]",
+        "name": "SICE: Learning a Deep Single Image Contrast Enhancer from Multi-Exposure Images",
+        "source_dataset_size": {
+          "multi_exposure_sequences": 589,
+          "images": 4413,
+          "part1_sequences": 360,
+          "part2_sequences": 229
+        },
+        "selected_by_lersgan_from_source": null
+      },
+      {
+        "paper_ref": "[55]",
+        "name": "RAISE: A Raw Images Dataset for Digital Image Forensics",
+        "source_dataset_size": {
+          "raw_images": 8156
+        },
+        "selected_by_lersgan_from_source": null
+      }
+    ],
+    "lersgan_aggregate_counts": {
+      "initial_collection": {
+        "low_light_images_approx": 900,
+        "normal_light_images_approx": 1000
+      },
+      "after_manual_filtering": {
+        "removed": "images with intermediate brightness levels"
+      },
+      "resize": "600x400",
+      "train": {
+        "low_light_unpaired": 800,
+        "normal_light_unpaired": 900
+      },
+      "validation": {
+        "low_light_unpaired": 100,
+        "normal_light_unpaired": 100
+      },
+      "augmentation": {
+        "random_horizontal_flip": true,
+        "random_patch_size": "256x256"
+      }
+    }
+  },
+  "remote_sensing_test_dataset": {
+    "base_sources": [
+      {
+        "paper_ref": "[56]",
+        "name": "NWPU-RESISC45",
+        "source_dataset_size": {
+          "images": 31500,
+          "classes": 45,
+          "images_per_class": 700,
+          "image_size": "256x256 RGB"
+        },
+        "selected_by_lersgan_from_source": null
+      },
+      {
+        "paper_ref": "[57]",
+        "name": "VisDrone",
+        "source_dataset_size": {
+          "static_images": 10209,
+          "video_clips": 288,
+          "video_frames": 261908
+        },
+        "selected_by_lersgan_from_source": null
+      }
+    ],
+    "lersgan_selected_normal_light_aerial_images": 500,
+    "generated_low_light_sets": [
+      {
+        "name": "RSDark1",
+        "condition": "standard low-light",
+        "brightness_scaling_alpha": [0.2, 0.4],
+        "noise": "moderate Gaussian sensor noise"
+      },
+      {
+        "name": "RSDark2",
+        "condition": "extreme low-light",
+        "brightness_scaling_alpha": [0.05, 0.2],
+        "noise": "Poisson shot noise + Gaussian read noise"
+      }
+    ]
+  },
+  "local_rebuild": {
+    "training_candidates": {
+      "low_light_roots": [
+        {
+          "paper_ref": "[11]",
+          "name": "LOL_RetinexNet_low",
+          "local_root": "data/raw/lersgan_paper/train_candidates/low_light/LOL_RetinexNet",
+          "recursive": true
+        },
+        {
+          "paper_ref": "[53]",
+          "name": "DeepHDR_Kalantari_SIGGRAPH2017_low",
+          "local_root": "data/raw/lersgan_paper/train_candidates/low_light/DeepHDR_Kalantari_SIGGRAPH2017",
+          "recursive": true
+        },
+        {
+          "paper_ref": "[54]",
+          "name": "SICE_underexposed",
+          "local_root": "data/raw/lersgan_paper/train_candidates/low_light/SICE",
+          "recursive": true
+        }
+      ],
+      "normal_light_roots": [
+        {
+          "paper_ref": "[11]",
+          "name": "LOL_RetinexNet_normal",
+          "local_root": "data/raw/lersgan_paper/train_candidates/normal_light/LOL_RetinexNet",
+          "recursive": true
+        },
+        {
+          "paper_ref": "[53]",
+          "name": "DeepHDR_Kalantari_SIGGRAPH2017_normal",
+          "local_root": "data/raw/lersgan_paper/train_candidates/normal_light/DeepHDR_Kalantari_SIGGRAPH2017",
+          "recursive": true
+        },
+        {
+          "paper_ref": "[54]",
+          "name": "SICE_normal_exposure",
+          "local_root": "data/raw/lersgan_paper/train_candidates/normal_light/SICE",
+          "recursive": true
+        },
+        {
+          "paper_ref": "[55]",
+          "name": "RAISE_optional_normal",
+          "local_root": "data/raw/lersgan_paper/train_candidates/normal_light/RAISE_optional",
+          "optional": true,
+          "recursive": true
+        }
+      ]
+    },
+    "remote_sensing_test_candidates": {
+      "normal_aerial_roots": [
+        {
+          "paper_ref": "[56]",
+          "name": "NWPU_RESISC45_normal_aerial",
+          "local_root": "data/raw/lersgan_paper/test_candidates/normal_aerial/NWPU_RESISC45",
+          "recursive": true
+        },
+        {
+          "paper_ref": "[57]",
+          "name": "VisDrone_DET_normal_aerial",
+          "local_root": "data/raw/lersgan_paper/test_candidates/normal_aerial/VisDrone_DET",
+          "recursive": true
+        }
+      ]
+    },
+    "rsdark_noise_parameters_reproduction": {
+      "RSDark1": {
+        "gaussian_sigma_range": [0.01, 0.03]
+      },
+      "RSDark2": {
+        "poisson_peak_range": [20, 60],
+        "gaussian_read_sigma_range": [0.005, 0.02]
+      }
+    }
+  },
+  "disallowed_sources": [
+    "SYSU-CD",
+    "Waymo",
+    "nuScenes",
+    "occ3d-nuscenes",
+    "COD"
+  ],
+  "important_note": "The paper does not report per-source selected counts for [11], [53], [54], [55], [56], or [57]. It only reports aggregate LersGAN counts. A 90%/70% darkening protocol is a local reproduction choice, not the paper's stated RSDark1/RSDark2 generation protocol."
+}

@@ -1,0 +1,47 @@
+experiment:
+  name: lersgan_rs
+  output_dir: experiments/lersgan_rs
+  seed: 2026
+
+data:
+  root: data/LERSGAN_RS_PAPER
+  mode: unpaired
+  low_domain: low_light
+  normal_domain: normal_light
+  image_size: 256
+  batch_size: 8
+  num_workers: 4
+  paired: false
+
+model:
+  generator:
+    in_channels: 3
+    out_channels: 3
+    base_channels: 64
+    num_res_blocks: 6
+  discriminator:
+    in_channels: 3
+    base_channels: 64
+    num_layers: 3
+
+train:
+  epochs: 100
+  lr_g: 0.0002
+  lr_d: 0.0002
+  beta1: 0.5
+  beta2: 0.999
+  lambda_l1: 100.0
+  lambda_identity: 5.0
+  lambda_perceptual: 0.0
+  log_every: 50
+  sample_every: 500
+  save_every_epoch: 10
+  resume: null
+
+test:
+  checkpoint: experiments/lersgan_rs/checkpoints/latest.pt
+  output_dir: results/lersgan_rs
+  low_domains:
+    - RSDark1
+    - RSDark2
+  target_domain: normal
