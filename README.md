@@ -5,6 +5,14 @@ Reproduction code and dataset tooling for **LersGAN: A GAN-Based Model for Low-L
 - Paper: https://doi.org/10.1109/JSTARS.2025.3608696
 - Dataset: https://huggingface.co/datasets/cod-tdq/lersgan
 
+## Outputs & Applications
+
+<img src="photo/demo1.png" width="75%" />
+
+## Visual Comparisons on RSDark Dataset
+
+<img src="photo/RSph.png" width="75%" />
+
 ## Installation
 
 ```bash
